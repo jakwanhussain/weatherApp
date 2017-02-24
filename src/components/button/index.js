@@ -12,8 +12,8 @@ export default class Button extends Component {
 		}	
 		return (
 			<div>
-				<button onClick={clickFunction}>
-					Display Weather
+				<button onClick={clickFunction} style= "vertical-align:middle">
+					<span>Display Weather</span>
 				</button>
 			</div>
 		);
