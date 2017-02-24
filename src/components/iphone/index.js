@@ -13,8 +13,6 @@ import Button from '../button';
 import Button2 from '../button2';
 import Button3 from '../button3';
 import ResetButton from '../resetButton';
-//import sidebar
-import Sidebar from '../sidebar';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -28,8 +26,6 @@ export default class Iphone extends Component {
 		// // button display state
 		
 		this.state.displayButton1 = true;
-		//this.state.searchbar=true;
-		//this.state.sidebarOption=true;
 		this.state.displayButton2 = true;
 		this.state.displayButton3 = false;
 		this.state.displayHow = false;
@@ -120,13 +116,8 @@ export default class Iphone extends Component {
 						 <Button2  clickFunction={ this.fetchLocalJsonData }/ > 
 					</div>
 				: null }
-				//sidebar
-				//{this.state.sidebarOption?
-				//<div> <sidebar/> 
-				//</div>
-				//:null }
-				
-				{this.state.displayButton3 ?
+
+				{ this.state.displayButton3 ?
 					<div class={style_button3.button3_container}> 
 						 <Button3 class={ style_button3.button } clickFunction={ this.returnPhrase }/ > 
 					</div>
