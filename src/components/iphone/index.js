@@ -6,6 +6,7 @@ import style_button1 from '../button/style_button1';
 import style_button2 from '../button2/button2_style';
 import style_button3 from '../button3/button3_style';
 import style_resetButton from '../resetButton/resetButton_style';
+//import sidebar_style from '../sidebar/sidebar_style';
 // import jquery for API calls
 import $ from 'jquery';
 // import the Button component
@@ -13,6 +14,7 @@ import Button from '../button';
 import Button2 from '../button2';
 import Button3 from '../button3';
 import ResetButton from '../resetButton';
+//import Sidebar from '../sidebar';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -29,13 +31,15 @@ export default class Iphone extends Component {
 		this.state.displayButton2 = true;
 		this.state.displayButton3 = false;
 		this.state.displayHow = false;
+                //this.fetchWeatherData();
+                //this.state.displaySidebar = true;
 		console.log(this.state);
 	}
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = "http://api.wunderground.com/api/dbd7f2b02a0f874b/conditions/q/UK/London.json";
+		var url = "http://api.wunderground.com/api/dbd7f2b02a0f874b/conditions/forecast10day/q/UK/London.json";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -63,6 +67,7 @@ export default class Iphone extends Component {
 			displayButton1: false,
 			displayButton2: false,
 			displayButton3: true,
+                        //sidebar: true,
 			locate: "",
 			temp: "",
 			cond: ""
@@ -98,6 +103,7 @@ export default class Iphone extends Component {
 				<div class={ style.header }>
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
+                                        <div class={ style.forecast10day }>{ this.state.f10d }</div>
 					<span class={ tempStyles }>{ this.state.temp }</span>
 					<h1 class={ style.phrase1 }>{ this.state.greet1 }</h1>
 					<h1 class={ style.phrase1 }>{ this.state.greet2 }</h1>
@@ -128,6 +134,8 @@ export default class Iphone extends Component {
 						 <ResetButton class={ style_resetButton.button } clickFunction={ this.reset }/ > 
 					</div>
 				: null }
+                                
+                     
 
 			</div>
 		);
@@ -137,12 +145,14 @@ export default class Iphone extends Component {
 		var location = parsed_json['current_observation']['display_location']['city'];
 		var temp_c = parsed_json['current_observation']['temp_c'];
 		var conditions = parsed_json['current_observation']['weather'];
+                var forecast10day = parsed_json['txt_forecast']['date'][0]['fcttext'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
 			locate: location,
 			temp: temp_c,
-			cond : conditions
+			cond : conditions,
+                        f10d : forecast10day
 		});      
 	}
 
