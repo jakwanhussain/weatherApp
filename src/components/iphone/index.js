@@ -15,6 +15,7 @@ import Button2 from '../button2';
 import Button3 from '../button3';
 import ResetButton from '../resetButton';
 //import Sidebar from '../sidebar';
+import Sidebar from 'react-side-bar';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -31,14 +32,30 @@ export default class Iphone extends Component {
 		this.state.displayButton2 = true;
 		this.state.displayButton3 = false;
 		this.state.displayHow = false;
+                    //SideBar
+                    /*this.state = {
+                    opened: false}*/
                 //this.fetchWeatherData();
                 //this.state.displaySidebar = true;
 		console.log(this.state);
 	}
-
+           
+        //SideBar
+        /*const sidebarProps = {
+            bar: (<div>Amazing Sidebar</div>),
+    opened: this.state.opened,
+    onClose: () => {
+        setState({ opened: false })
+    },
+    onOpen: () => {
+        setState({ opened: true })
+    },
+    size: 200
+        };
+            */
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
-		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
+		// API URL with a structure of : http://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.wunderground.com/api/dbd7f2b02a0f874b/conditions/forecast10day/q/UK/London.json";
 		$.ajax({
 			url: url,
@@ -105,8 +122,21 @@ export default class Iphone extends Component {
 				<div class={ style.header }>
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
-                                        <div class={ style.city }>{ this.state.f10d }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span>
+                                        <ul style="list-style:none;">
+                                        <li>{ this.state.cond }</li> &nbsp;
+                                        <li>{ this.state.cond }</li> &nbsp;
+                                        <li>{ this.state.cond }</li> &nbsp;
+                                        <li>{ this.state.cond }</li> 
+                                        </ul>
+                                        <span class={ tempStyles }>{ this.state.temp }</span>
+                                        <div class={ style.forecast }>
+                                        <ul style="list-style:none;">
+                                        <li>{ this.state.f10d }</li> &nbsp;
+                                        <li>{ this.state.f10d }</li> &nbsp;
+                                        <li>{ this.state.f10d }</li> &nbsp;
+                                        <li>{ this.state.f10d }</li> 
+                                        </ul></div>
+					
 					<h1 class={ style.phrase1 }>{ this.state.greet1 }</h1>
 					<h1 class={ style.phrase1 }>{ this.state.greet2 }</h1>
 					<h1 class={ style.phrase1 }>{ this.state.inst }</h1>
