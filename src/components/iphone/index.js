@@ -15,7 +15,7 @@ import Button2 from '../button2';
 import Button3 from '../button3';
 import ResetButton from '../resetButton';
 //import Sidebar from '../sidebar';
-import Sidebar from 'react-side-bar';
+//import Sidebar from 'react-side-bar';
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
