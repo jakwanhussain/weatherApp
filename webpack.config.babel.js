@@ -42,14 +42,14 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: path.resolve(__dirname, 'src'),
-				loader: 'source-map'
+				loader: 'source-map-loader'
 			}
 		],
 		loaders: [
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loader: 'babel'
+				loader: 'babel-loader'
 			},
 			{
 				// Transform our own .(less|css) files with PostCSS and CSS-modules

@@ -1,0 +1,21 @@
+@import '~style/helpers';
+
+.wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 500px; 
+    border: 1px solid black;
+}
+#slide {
+    position: absolute;
+    left: -100px;
+    width: 200px;
+    height: 500px;
+    background: #0ea9c0;
+    transition: 1s;
+}
+.wrapper:hover #slide {
+    transition: 1s;
+    left: 0;
+}

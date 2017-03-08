@@ -3,19 +3,18 @@
 .container { 
 	display: flex;
 	flex-direction: column;
-	background-image: url('../../assets/backgrounds/home.png');
+	background-image: url('../../assets/backgrounds/clear-iphone.gif');
 	color: #fff;
-	width: 400px;
+	width: 414px;
 	height: 736px;
 	text-align: center;
-	padding-top: 80px;
+	padding-top: 50px;
 	margin: 0 auto;
 }
 .header {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	height: auto;
 }
 .details {
 	flex: 4;
@@ -29,19 +28,19 @@
 	flex: 1;
 	font-size: 1em;
 }
-
-.forecast{
-     li{display:inline;}
-}
 .temperature {
 	flex: 2;
 	margin-top: 0;
 	font-size: 4.8em;
 	font-weight: 300;
-	letter-spacing: -12px;
+	letter-spacing: -5px;
 }
+
+.time {
+    
+}
+
 .filled:after {
-	content: "°";
 	margin: 0 0 0 1rem;
 	font-size: 0.5em;
 	font-weight: 100;
@@ -50,24 +49,10 @@
 	vertical-align: top;
 }
 
-.phrase1 {
-	flex: 1;
-	font-family: Georgia, serif;
-	color: yellow;
-	font-weight: bold;
-}
-
-.phrase2 {
-	flex: 1;
-	font-family: Helvetica, sans-serif;
-	color: purple;
-	font-size: 3em;
-	font-weight: bold;
-	background: yellow;
-}
-
-.lower_container {
-	display: flex;
-    justify-content: center;
-    margin-bottom: 90px;
+.input{
+	height: 40px;
+	text-align: center;
+	margin:10px;
+	color: #6DA4CC;
+	font-size: 18px;
 }

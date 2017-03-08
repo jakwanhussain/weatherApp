@@ -83,5 +83,9 @@
   "main": "webpack.config.babel.js",
   "directories": {
     "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.research.its.qmul.ac.uk/ec15071/weatherapp.git"
   }
 }

@@ -12,9 +12,11 @@ export default class Button2 extends Component {
         }   
         return (
             <div>
-                <button onClick={clickFunction}>
-                    I'm Button 2
+			<a  href="http://www.interrail.eu/interrail-passes/" target="_blank">
+                 <button onClick={clickFunction}>
+                    Buy Tickets
                 </button>
+				</a>
             </div>
         );
     }

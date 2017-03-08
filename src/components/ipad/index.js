@@ -14,16 +14,18 @@ export default class Ipad extends Component {
 	// a constructor with initial set states
 	constructor(props){
 		super(props);
-		// temperature state
-		this.state.temp = "";
-		// button display state
-		this.setState({ display: true });
+		this.state={
+			// temperature state
+			temp : '',
+			// button display state
+			display: true
     }
+  }
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = "http://api.wunderground.com/api/c78f1a13d2ca6971/conditions/q/UK/London.json";
+		var url = `http://api.wunderground.com/api/dbd7f2b02a0f874b/conditions/forecast10day/q/UK/${this.state.term}.json`;
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -43,6 +45,7 @@ export default class Ipad extends Component {
 		return (
 			<div class={ style.container }>
 				<div class={ style.header }>
+					<input type="text" placeholder="search weather" onChange={(e) => this.setState({ term: e.target.value })}/>
 					<div class={ style.city }>{ this.state.currentCity }</div>
 					<div class={ style.country }>{ this.state.currentCountry }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
@@ -50,7 +53,7 @@ export default class Ipad extends Component {
 				</div>
 				<div class={ style.details }></div>
 				<div class={ style_ipad.container }>
-					{ this.state.display ? <Button class={ style_ipad.button } clickFunction={ this.fetchWeatherData }/ > : null }
+					<Button class={ style_ipad.button } clickFunction={ this.fetchWeatherData }/ >
 				</div>
 			</div>
 		);
