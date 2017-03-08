@@ -21,13 +21,14 @@ export default class Iphone extends Component {
 		super(props);
 		this.state={
 			// location state
-			location: 'London',
+			location: '',
     }
   }
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = `http://api.openweathermap.org/data/2.5/forecast?appid=5a0ef66c2f23f2efb778937d7643e128&q=${this.state.location}`;
+		var url = `http://api.openweathermap.org/data/2.5/forecast/daily?appid=5a0ef66c2f23f2efb778937d7643e128&q=${this.state.location}&mode=json&units=metric&cnt=7`;
+		// var url = `http://api.openweathermap.org/data/2.5/forecast?appid=5a0ef66c2f23f2efb778937d7643e128&q=${this.state.location}`;
 		// var url = `http://api.wunderground.com/api/dbd7f2b02a0f874b/conditions/forecast10day/hourly/q/${this.state.country}/${this.state.city}.json`;
 		$.ajax({
 			url: url,
@@ -43,20 +44,68 @@ export default class Iphone extends Component {
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
-        
+		const imgURL1 = `http://openweathermap.org/img/w/${this.state.icon1}.png`;
+		const imgURL2 = `http://openweathermap.org/img/w/${this.state.icon2}.png`;
+		const imgURL3 = `http://openweathermap.org/img/w/${this.state.icon3}.png`;
+		const imgURL4 = `http://openweathermap.org/img/w/${this.state.icon4}.png`;
+		const imgURL5 = `http://openweathermap.org/img/w/${this.state.icon5}.png`;
+		const imgURL6 = `http://openweathermap.org/img/w/${this.state.icon6}.png`;
+		const imgURL7 = `http://openweathermap.org/img/w/${this.state.icon7}.png`;
 		// display all weather data
 		return (
 			<div class={ style.container }>
         <input class= {style.input} type="text" placeholder="Enter Location" value={ this.state.location } onChange={(e) => this.setState({ location: e.target.value })}/>
 				<div class= { style_iphone.container }> 
-					<Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData } />	
-				</div>  
-				<div class={ style.header }> /
-					<div class={ style.city }>{ this.state.locate }</div>  
-					<div class={ style.conditions }>{ this.state.cond }</div>   
-					<span class={ tempStyles }>{ this.state.temp }</span>                      
+					<Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData } />
 				</div>
-				<div class={`${style_button2.button2_container} some-class`}> 
+				<div class={ style.header }>
+					<div class={ style.city }>{ this.state.locate }</div>
+					<div class={ style.row }>
+						<div class={ style.box }>
+							{this.state.icon1 ? <img src={imgURL1} /> : ''}   
+                                                        <div class={ style.conditions }>{ this.state.d1 }</div>
+							<div class={ style.conditions }>{ this.state.cond1 }</div>
+							<div class={ tempStyles }>{ this.state.temp1 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon2 ? <img src={imgURL2} /> : ''}  
+                                                        <div class={ style.conditions }>{ this.state.d2 }</div>
+							<div class={ style.conditions }>{ this.state.cond2 }</div>
+							<div class={ tempStyles }>{ this.state.temp2 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon3 ? <img src={imgURL3} /> : ''}   
+                                                        <div class={ style.conditions }>{ this.state.d3 }</div>
+							<div class={ style.conditions }>{ this.state.cond3 }</div>
+							<div class={ tempStyles }>{ this.state.temp3 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon4 ? <img src={imgURL4} /> : ''} 
+                                                        <div class={ style.conditions }>{ this.state.d4 }</div>
+							<div class={ style.conditions }>{ this.state.cond4 }</div>
+							<div class={ tempStyles }>{ this.state.temp4 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon5 ? <img src={imgURL5} /> : ''} 
+                                                        <div class={ style.conditions }>{ this.state.d5 }</div>
+							<div class={ style.conditions }>{ this.state.cond5 }</div>
+							<div class={ tempStyles }>{ this.state.temp5 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon6 ? <img src={imgURL6} /> : ''}       
+                                                        <div class={ style.conditions }>{ this.state.d6 }</div>
+							<div class={ style.conditions }>{ this.state.cond6 }</div>
+							<div class={ tempStyles }>{ this.state.temp6 }</div>
+						</div>
+						<div class={ style.box }>
+							{this.state.icon7 ? <img src={imgURL7} /> : ''}    
+                                                        <div class={ style.conditions }>{ this.state.d7 }</div>
+							<div class={ style.conditions }>{ this.state.cond7 }</div>
+							<div class={ tempStyles }>{ this.state.temp7 }</div>
+						</div>
+					</div>
+				</div>
+                                <div class={`${style_button2.button2_container} some-class`}> 
 					 <Button2 /> 
 				</div>
 				<div class={ style.details }></div>
@@ -66,15 +115,81 @@ export default class Iphone extends Component {
 
 	parseResponse = (parsed_json) => {
 		var location = parsed_json.city.name+', '+parsed_json.city.country;
-		var temp_c = Math.round(parsed_json.list[0].main.temp-273.15);
-		var conditions = parsed_json.list[0].weather[0].main;	
+		// day One weather
+                var day1 = "Monday";
+		var temp_1 = Math.round(parsed_json.list[0].temp.max);
+		var conditions_1 = parsed_json.list[0].weather[0].main;
+		var icon_1 = parsed_json.list[0].weather[0].icon;
+		// day two weather
+                var day2 = "Tuesday";
+		var temp_2 = Math.round(parsed_json.list[1].temp.max);
+		var conditions_2 = parsed_json.list[1].weather[0].main;
+		var icon_2 = parsed_json.list[1].weather[0].icon;
+		// day three weather
+                var day3 = "Wednesday";
+		var temp_3 = Math.round(parsed_json.list[2].temp.max);
+		var conditions_3 = parsed_json.list[2].weather[0].main;
+		var icon_3 = parsed_json.list[2].weather[0].icon;
+		// day four weather
+                var day4 = "Thursday";
+		var temp_4 = Math.round(parsed_json.list[3].temp.max);
+		var conditions_4 = parsed_json.list[3].weather[0].main;
+		var icon_4 = parsed_json.list[3].weather[0].icon;
+		// day five weather
+                var day5 = "Friday";
+		var temp_5 = Math.round(parsed_json.list[4].temp.max);
+		var conditions_5 = parsed_json.list[4].weather[0].main;
+		var icon_5 = parsed_json.list[4].weather[0].icon;
+		// day six weather
+                var day6 = "Saturday";
+		var temp_6 = Math.round(parsed_json.list[5].temp.max);
+		var conditions_6 = parsed_json.list[5].weather[0].main;
+		var icon_6 = parsed_json.list[5].weather[0].icon;
+		// day seven weather
+                var day7 = "Sunday";
+		var temp_7 = Math.round(parsed_json.list[6].temp.max);
+		var conditions_7 = parsed_json.list[6].weather[0].main;
+		var icon_7 = parsed_json.list[6].weather[0].icon;
     //var timeT = parsed_json['FCTTIME']['pretty'];
 		// set states for fields so they could be rendered later on
 		 this.setState({
 		 	locate: location,
-			temp: temp_c+ "°C",
-			cond : conditions,
-		// 	//time : timeT
+		 	// day one state
+                        d1: day1,
+			temp1: temp_1+"°C",
+			cond1: conditions_1,
+			icon1: icon_1,
+			// day two state
+                        d2: day2,
+			temp2: temp_2+"°C",
+			cond2: conditions_2,
+			icon2: icon_2,
+			// day three state
+                        d3: day3,
+			temp3: temp_3+"°C",
+			cond3: conditions_3,
+			icon3: icon_3,
+			// day four state
+                        d4: day4,
+			temp4: temp_4+"°C",
+			cond4: conditions_4,
+			icon4: icon_4,
+			// day five state
+                        d5: day5,
+			temp5: temp_5+"°C",
+			cond5: conditions_5,
+			icon5: icon_5,
+			// day six state
+                        d6: day6,
+			temp6: temp_6+"°C",
+			cond6: conditions_6,
+			icon6: icon_6,
+			// day seven state
+                        d7: day7,
+			temp7: temp_7+"°C",
+			cond7: conditions_7,
+			icon7: icon_7,
+		 	//time : timeT
 		 });      
 	}
 }

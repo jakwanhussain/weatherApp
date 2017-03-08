@@ -16,39 +16,44 @@
 	flex-direction: column;
 	flex: 1;
 }
-.details {
-	flex: 4;
-}
 .city {
 	flex: 1;
 	font-size: 1.7em;
 	font-weight: 400;	
 }
-.conditions {
-	flex: 1;
-	font-size: 1em;
-}
-.temperature {
-	flex: 2;
-	margin-top: 0;
-	font-size: 4.8em;
-	font-weight: 300;
-	letter-spacing: -5px;
+.row {
+	display: flex;
+	flex-direction: row;
+	height: 300px;
 }
 
-.time {
-    
+.box{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	padding: 5px;
+}
+.details {
+	flex: 4;
+}
+
+.conditions {
+	font-size: 0.8em;
+}
+.temperature {
+	font-size: 1.2em;
+	font-weight: 300;
+}
+
+.time {   
 }
 
 .filled:after {
 	margin: 0 0 0 1rem;
 	font-size: 0.5em;
-	font-weight: 100;
-	display: inline-block;
 	padding-top: 10px;
-	vertical-align: top;
+	vertical-align: center center;
 }
-
 .input{
 	height: 40px;
 	text-align: center;
