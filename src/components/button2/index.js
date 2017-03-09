@@ -16,7 +16,7 @@ export default class Button2 extends Component {
                  <button onClick={clickFunction}>
                     Buy Tickets
                 </button>
-				</a>
+		       </a>
             </div>
         );
     }
