@@ -1,6 +1,6 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for ipad & button
+// import stylesheets for iphone & button
 import style from './style';
 import style_iphone from '../button/style_iphone';
 import style_button2 from '../button2/button2_style';
@@ -46,17 +46,16 @@ export default class Iphone extends Component {
 	  const imgURL5 = `http://openweathermap.org/img/w/${this.state.icon5}.png`;
 	  const imgURL6 = `http://openweathermap.org/img/w/${this.state.icon6}.png`;
 	  const imgURL7 = `http://openweathermap.org/img/w/${this.state.icon7}.png`;
-          const logo = '../assets/icons/Weather-App-Logo.png';
-	  // display all weather data
-	  return (
+          const logo = '../assets/icons/Weather-App-Logo.png';  
+            return (
 		
-	  	<div class = { style.container }>
+	  	<div class = { style.container }> 
 		<div>
 		<input src={logo} type="image" width="75" height="75" style="display:inline-block"/>
 		</div>
 	      <input class = { style.input }
 	      type = "text"
-	      placeholder = "Enter Location"
+	      placeholder = "Enter Location"	
 	      value = { this.state.location }
 	      onChange = { (e) => this.setState({ location: e.target.value }) } />
 	      <div class = { style_iphone.container }>
