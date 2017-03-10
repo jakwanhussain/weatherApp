@@ -32,7 +32,7 @@ export default class Iphone extends Component {
 			url,
 			dataType: "jsonp",
 			success: this.parseResponse,
-			error: function(req, err) { console.log('API call failed ' + err); }
+			error: function(req, err) { console.log('API call failed ' + alert("Please enter location")); }
 		});
     // once the data grabbed, set search term to null
 		this.setState({ location: '' });

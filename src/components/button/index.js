@@ -7,7 +7,7 @@ export default class Button extends Component {
 	render({clickFunction}) {
 		if(!clickFunction){
 			clickFunction = () => {
-				console.log("passed something as 'clickFunction' that wasn't a function !");
+                                   console.log("passed something as 'clickFunction' that wasn't a function !");
 			}
 		}	
 		return (
